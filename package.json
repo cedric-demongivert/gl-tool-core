@@ -1,6 +1,6 @@
 {
   "name": "@cedric-demongivert/gl-tool-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Core classes of the gl-tool engine.",
   "main": "index.js",
   "scripts": {
