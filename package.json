@@ -1,0 +1,42 @@
+{
+  "name": "@cedric-demongivert/gl-tool-core",
+  "version": "0.0.1",
+  "description": "Core classes of the gl-tool engine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "doc": "esdoc",
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "preversion": "npm install && npm test",
+    "version": "npm run build && npm run doc && git add --all",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": "https://gitlab.cedric-demongivert.com/gl-tool/gl-tool-core.git",
+  "author": "Cédric DEMONGIVERT <cedric.demongivert@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules",
+      "/templates",
+      "/generation"
+    ]
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "cross-env": "^5.2.0",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-external-ecmascript-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "jest": "^23.6.0",
+    "laravel-mix": "^2.1.14",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "dependencies": {}
+}
