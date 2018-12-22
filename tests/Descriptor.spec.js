@@ -3,7 +3,7 @@
 import { Descriptor, GLContext, GLContextualisation } from '@library'
 import { createWebGLContext } from './createWebGLContext'
 
-describe('GLObject', function () {
+describe('Descriptor', function () {
   describe('#contextualise', function () {
     it('instantiate a new GLContextualisation by default', function () {
       const wrapper = GLContext.of(createWebGLContext())
