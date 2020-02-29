@@ -5,6 +5,9 @@
   "main": "./sources/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
+    "preversion": "yarn install && yarn test",
+    "version": "yarn run build && git add --all",
+    "postversion": "git push && git push --tags",
     "test": "jest",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
