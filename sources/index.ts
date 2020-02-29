@@ -1,5 +1,5 @@
 export { GLContext } from './GLContext'
-export { GLObject } from './GLObject'
+export { GLResource } from './GLResource'
 export { GLContextualisation } from './GLContextualisation'
 export { Descriptor } from './Descriptor'
 export { GLView } from './GLView'
