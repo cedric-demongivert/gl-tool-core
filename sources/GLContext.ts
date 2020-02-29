@@ -126,10 +126,6 @@ export class GLContext {
 
     this.resources.delete(resource)
 
-    if (resource instanceof GLContextualisation) {
-      this.contextualisations.delete(resource.descriptor)
-    }
-
     if (resource.destroyed === false) {
       resource.destroy()
     }

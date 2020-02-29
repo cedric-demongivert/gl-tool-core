@@ -47,6 +47,17 @@ export class GLContextualisation extends GLResource {
   }
 
   /**
+  * @see GLResource.destroy
+  */
+  public destroy () : void {
+    super.destroy()
+
+    if (this.context.contextualisations.get(this.descriptor) === this) {
+      this.context.contextualisations.delete(this.descriptor)
+    }
+  }
+
+  /**
   * Update this contextualisation in regards of it's related descriptor.
   */
   public pull () : void {
