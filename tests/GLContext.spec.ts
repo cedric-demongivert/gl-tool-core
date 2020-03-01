@@ -53,7 +53,7 @@ describe('GLContext', function () {
 
     it('handle the addition of contextualisation', function () {
       const context : GLContext = new GLContext(createWebGLContext())
-      const descriptor : Descriptor = new Descriptor()
+      const descriptor : Descriptor = {} as Descriptor
 
       expect(context.resources.size).toBe(0)
       expect(context.contextualisations.size).toBe(0)
@@ -121,7 +121,7 @@ describe('GLContext', function () {
 
     it('handle the deletion of contextualisation', function () {
       const context : GLContext = new GLContext(createWebGLContext())
-      const descriptor : Descriptor = new Descriptor()
+      const descriptor : Descriptor = {} as Descriptor
       const contextualisation : GLContextualisation<Descriptor> = new GLContextualisation(descriptor, context)
 
       expect(context.resources.size).toBe(1)

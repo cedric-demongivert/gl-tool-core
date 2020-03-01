@@ -4,13 +4,19 @@ import { GLContextualisation } from './GLContextualisation'
 /**
 * Some resource description.
 */
-export class Descriptor {
+export interface Descriptor {
+
+}
+
+export namespace Descriptor {
   /**
-  * Update all existing contextualisation of this descriptor.
+  * Update all existing contextualisation of the given descriptor.
+  *
+  * @param descriptor - A descriptor to commit.
   */
-  public commit () : void {
+  export function commit<T extends Descriptor> (descriptor : T) : void {
     for (const context of GLContext.all()) {
-      const contextualisation : GLContextualisation<Descriptor> = context.contextualisation(this)
+      const contextualisation : GLContextualisation<T> = context.contextualisation(descriptor)
 
       if (contextualisation) {
         contextualisation.pull()
