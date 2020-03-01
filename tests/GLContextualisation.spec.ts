@@ -43,18 +43,17 @@ describe('GLContextualisation', function () {
     })
   })
 
-  describe('#pull', function () {
+  describe('#synchronize', function () {
     it('update the contextualisation timestamp', function () {
       const context : GLContext = new GLContext(createWebGLContext())
       const descriptor : Descriptor = {} as Descriptor
       const contextualisation : GLContextualisation<Descriptor> = new GLContextualisation(descriptor, context)
-      const timestamp : number = contextualisation.timestamp
 
-      for (let index = 0; index < 80000; ++index) {}
+      contextualisation.synchronized = false
 
-      contextualisation.pull()
+      contextualisation.synchronize()
 
-      expect(contextualisation.timestamp).toBeGreaterThan(timestamp)
+      expect(contextualisation.synchronized).toBeTruthy()
     })
   })
 })

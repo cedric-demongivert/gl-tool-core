@@ -17,6 +17,11 @@ export class GLContextualisation<T extends Descriptor> extends GLResource {
   public timestamp : number
 
   /**
+  * True if this resource is synchronized with its descriptor.
+  */
+  public synchronized : boolean
+
+  /**
   * Create a contextualisation of a descriptor.
   *
   * @param descriptor - A descriptor to contextualise.
@@ -33,8 +38,9 @@ export class GLContextualisation<T extends Descriptor> extends GLResource {
 
     super(context)
 
-    this.descriptor = descriptor
-    this.timestamp = Date.now()
+    this.descriptor   = descriptor
+    this.timestamp    = Date.now()
+    this.synchronized = true
 
     context.contextualisations.set(this.descriptor, this)
   }
@@ -58,9 +64,10 @@ export class GLContextualisation<T extends Descriptor> extends GLResource {
   }
 
   /**
-  * Update this contextualisation in regards of it's related descriptor.
+  * Synchronize this contextualisation with it's related descriptor.
   */
-  public pull () : void {
-    this.timestamp = Date.now()
+  public synchronize () : void {
+    this.timestamp    = Date.now()
+    this.synchronized = true
   }
 }

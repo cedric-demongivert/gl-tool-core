@@ -10,7 +10,7 @@ export interface Descriptor {
 
 export namespace Descriptor {
   /**
-  * Update all existing contextualisation of the given descriptor.
+  * Desynchronize all existing contextualisation of the given descriptor.
   *
   * @param descriptor - A descriptor to commit.
   */
@@ -19,7 +19,22 @@ export namespace Descriptor {
       const contextualisation : GLContextualisation<T> = context.contextualisation(descriptor)
 
       if (contextualisation) {
-        contextualisation.pull()
+        contextualisation.synchronized = false
+      }
+    }
+  }
+
+  /**
+  * Synchronize all existing contextualisation of the given descriptor.
+  *
+  * @param descriptor - A descriptor to commit.
+  */
+  export function push<T extends Descriptor> (descriptor : T) : void {
+    for (const context of GLContext.all()) {
+      const contextualisation : GLContextualisation<T> = context.contextualisation(descriptor)
+
+      if (contextualisation) {
+        contextualisation.synchronize()
       }
     }
   }
