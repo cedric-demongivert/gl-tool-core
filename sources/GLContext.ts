@@ -24,7 +24,7 @@ export class GLContext {
   /**
   * All contextualisations associated to this context.
   */
-  public readonly contextualisations : Map<Descriptor, GLContextualisation>
+  public readonly contextualisations : Map<Descriptor, GLContextualisation<Descriptor>>
 
   /**
   * A marker for released contexts.
@@ -39,7 +39,7 @@ export class GLContext {
   public constructor (context : WebGLRenderingContext) {
     this.context = context
     this.resources = new Set<GLResource>()
-    this.contextualisations = new Map<Descriptor, GLContextualisation>()
+    this.contextualisations = new Map<Descriptor, GLContextualisation<Descriptor>>()
     this._destroyed = false
 
     CONTEXTS.add(this)
@@ -50,6 +50,17 @@ export class GLContext {
   */
   public get destroyed () : boolean {
     return this._destroyed
+  }
+
+  /**
+  * Return a contextualisation of the given descriptor if exists.
+  *
+  * @param descriptor - A descriptor to search.
+  *
+  * @return The contextualisation of the given descriptor if exists.
+  */
+  public contextualisation <T extends Descriptor> (descriptor : T) : GLContextualisation<T> {
+    return this.contextualisations.get(descriptor) as GLContextualisation<T>
   }
 
   /**

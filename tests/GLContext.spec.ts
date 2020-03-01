@@ -58,7 +58,7 @@ describe('GLContext', function () {
       expect(context.resources.size).toBe(0)
       expect(context.contextualisations.size).toBe(0)
 
-      const contextualisation : GLContextualisation = new GLContextualisation(descriptor, context)
+      const contextualisation : GLContextualisation<Descriptor> = new GLContextualisation(descriptor, context)
 
       expect(context.resources.size).toBe(1)
       expect(context.resources).toEqual(new Set([contextualisation]))
@@ -122,7 +122,7 @@ describe('GLContext', function () {
     it('handle the deletion of contextualisation', function () {
       const context : GLContext = new GLContext(createWebGLContext())
       const descriptor : Descriptor = new Descriptor()
-      const contextualisation : GLContextualisation = new GLContextualisation(descriptor, context)
+      const contextualisation : GLContextualisation<Descriptor> = new GLContextualisation(descriptor, context)
 
       expect(context.resources.size).toBe(1)
       expect(context.contextualisations.size).toBe(1)

@@ -15,7 +15,7 @@ describe('Descriptor', function () {
         new GLContext(createWebGLContext()),
         new GLContext(createWebGLContext())
       ]
-      const contextualisations : GLContextualisation[] = contexts.map(
+      const contextualisations : GLContextualisation<Descriptor>[] = contexts.map(
         context => new GLContextualisation(descriptor, context)
       )
 

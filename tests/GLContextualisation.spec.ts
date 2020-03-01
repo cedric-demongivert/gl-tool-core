@@ -10,7 +10,7 @@ describe('GLContextualisation', function () {
     it('create a contextualisation of the given descriptor for the given context', function () {
       const context : GLContext = new GLContext(createWebGLContext())
       const descriptor : Descriptor = new Descriptor()
-      const contextualisation : GLContextualisation = new GLContextualisation(descriptor, context)
+      const contextualisation : GLContextualisation<Descriptor> = new GLContextualisation(descriptor, context)
 
       expect(contextualisation.context).toBe(context)
       expect(contextualisation.descriptor).toBe(descriptor)
@@ -31,7 +31,7 @@ describe('GLContextualisation', function () {
     it('destroy the contextualisation', function () {
       const context : GLContext = new GLContext(createWebGLContext())
       const descriptor : Descriptor = new Descriptor()
-      const contextualisation : GLContextualisation = new GLContextualisation(descriptor, context)
+      const contextualisation : GLContextualisation<Descriptor> = new GLContextualisation(descriptor, context)
 
       expect(contextualisation.destroyed).toBeFalsy()
       expect(context.contextualisations.size).toBe(1)
@@ -47,11 +47,11 @@ describe('GLContextualisation', function () {
     it('update the contextualisation timestamp', function () {
       const context : GLContext = new GLContext(createWebGLContext())
       const descriptor : Descriptor = new Descriptor()
-      const contextualisation : GLContextualisation = new GLContextualisation(descriptor, context)
+      const contextualisation : GLContextualisation<Descriptor> = new GLContextualisation(descriptor, context)
       const timestamp : number = contextualisation.timestamp
 
       for (let index = 0; index < 80000; ++index) {}
-      
+
       contextualisation.pull()
 
       expect(contextualisation.timestamp).toBeGreaterThan(timestamp)

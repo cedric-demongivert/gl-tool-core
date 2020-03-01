@@ -10,7 +10,7 @@ export class Descriptor {
   */
   public commit () : void {
     for (const context of GLContext.all()) {
-      const contextualisation : GLContextualisation = context.contextualisations.get(this)
+      const contextualisation : GLContextualisation<Descriptor> = context.contextualisation(this)
 
       if (contextualisation) {
         contextualisation.pull()

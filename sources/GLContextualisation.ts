@@ -5,11 +5,11 @@ import { Descriptor } from './Descriptor'
 /**
 * A resource that is the contextualisation of a descriptor.
 */
-export class GLContextualisation extends GLResource {
+export class GLContextualisation<T extends Descriptor> extends GLResource {
   /**
   * The descriptor of this contextualisation.
   */
-  public readonly descriptor : Descriptor
+  public readonly descriptor : T
 
   /**
   * Timestamp of the last update of this contextualisation.
@@ -19,10 +19,10 @@ export class GLContextualisation extends GLResource {
   /**
   * Create a contextualisation of a descriptor.
   *
-  * @param {Descriptor} descriptor - A descriptor to contextualise.
-  * @param {GLContext} context - The context to associate.
+  * @param descriptor - A descriptor to contextualise.
+  * @param context - The context to associate.
   */
-  public constructor (descriptor : Descriptor, context : GLContext) {
+  public constructor (descriptor : T, context : GLContext) {
     if (context.contextualisations.has(descriptor)) {
       throw new Error(
         'Unable to instantiate a contextualisation of the given descriptor ' +
@@ -42,7 +42,7 @@ export class GLContextualisation extends GLResource {
   /**
   * @see GLResource.clone
   */
-  public clone (context : GLContext) : GLContextualisation {
+  public clone (context : GLContext) : GLContextualisation<T> {
     return new GLContextualisation(this.descriptor, context)
   }
 
