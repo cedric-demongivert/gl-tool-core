@@ -10,6 +10,11 @@ export class GLResource {
   public readonly context : GLContext
 
   /**
+  * The parent gl-tool context of this resource.
+  */
+  public readonly webgl : WebGLRenderingContext
+
+  /**
   * Marker for released resources.
   */
   private _destroyed : boolean
@@ -22,6 +27,8 @@ export class GLResource {
   public constructor (context : GLContext) {
     this.context = context
     this.context.add(this)
+    this.webgl = this.context.context
+
     this._destroyed = false
   }
 
