@@ -99,7 +99,7 @@ export namespace GLView {
     let context : any
 
     try {
-      const context : any = (
+      context = (
         canvas.getContext('webgl', options) ||
         canvas.getContext('experimental-webgl', options)
       )
