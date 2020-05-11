@@ -27,7 +27,7 @@ export class GLView {
   *
   * @param configuration - Options to use for construction.
   */
-  public constructor (configuration : GLView.Configuration = { document }) {
+  public constructor (configuration : GLView.Configuration = { document: window.document }) {
     const document : Document = configuration.document
 
     this.element = document.createElement('canvas')
@@ -105,14 +105,12 @@ export namespace GLView {
       )
     } catch (exception) {
       throw new Error(
-        'Unnable to get a webgl context. Please check if your browser ' +
-        'support webgl or experimental-webgl.'
+        'Unnable to get a webgl context : ' + exception.message +  '. ' +
+        'Please check if your browser support webgl or experimental-webgl.'
       )
     }
 
-    if (context && context instanceof WebGLRenderingContext) {
-      return context
-    }
+    if (context) { return context }
 
     throw new Error(
       'Unnable to get a webgl context. Please check if your browser ' +
