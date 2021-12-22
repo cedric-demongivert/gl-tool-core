@@ -1,6 +1,6 @@
 {
   "name": "@cedric-demongivert/gl-tool-core",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Core classes of the gl-tool engine.",
   "main": "index.js",
   "types": "./types/index.d.ts",
@@ -8,12 +8,10 @@
     "preversion": "yarn install && yarn test",
     "version": "yarn run build && git add --all",
     "postversion": "git push && git push --tags",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run development -- --watch",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "documentation": "typedoc"
+    "build": "typedoc && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "publish": "yarn run build && npm publish ./distribution --access public"
   },
   "repository": "https://gitlab.cedric-demongivert.com/gl-tool/gl-tool-core.git",
   "author": "Cédric DEMONGIVERT <cedric.demongivert@gmail.com>",
@@ -31,5 +29,7 @@
     "ts-loader": "^6.0.2",
     "typedoc": "^0.16.11"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@cedric-demongivert/gl-tool-collection": "^0.25.2"
+  }
 }

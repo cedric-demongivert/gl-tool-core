@@ -1,6 +1,6 @@
 This software consists of voluntary contributions made by many individuals. For
 exact contribution history, see the revision history available at
-https://gitlab.cedric-demongivert.com/gl-tool/gl-tool-core.git
+https://github.com/cedric-demongivert/gl-tool-core
 
 The following license applies to all parts of this software except as documented
 below:
